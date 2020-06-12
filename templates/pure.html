@@ -1,0 +1,209 @@
+{% load static %}
+
+<html lang="en" xmlns:font-family="http://www.w3.org/1999/xhtml" xmlns:text-shadow="http://www.w3.org/1999/xhtml"
+      xmlns:font-size="http://www.w3.org/1999/xhtml" xmlns:color="http://www.w3.org/1999/xhtml">
+<head>
+<title>Indian Classical Dance</title>
+<link href=" {% static 'css/base1.css' %}" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+ .item1 { grid-area: header;
+         grid-column: 1/ span 13; }
+      .item2 { grid-area: menu;
+          grid-column: 1 / span 3; }
+      .item3 { grid-area: main;
+          grid-column: 4/ span 10;}
+      .item4 { grid-area: Right; }
+      .item5 { grid-area: footer;
+          grid-column: 4 / span 10; }
+
+.grid-container {
+  display: grid;
+  grid-gap: 2.5px;
+   grid-template-areas:
+  'header header header'
+  'menu main main'
+  'menu footer footer';
+  background-color: white;
+  grid-auto-columns: 94px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.grid-container > div {
+  background-color: white;
+  text-align: center;
+  padding: 0px 0;
+  font-size: 30px;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  text-decoration: none;
+  color: #29292A;
+  width:100%;
+  margin:0px;
+  border-radius: 17px;
+  font-style: bold;
+  font-size: 35px;
+  float: left;
+}
+
+
+.topnav a {
+  float: left;
+  color: #29292A;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: bold;
+  font-size: 31px;
+  text-shadow: 2px 2px 3px #FFD700;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+p{
+  font-size:18px;
+}
+#team tr:nth-child(even){
+                background-color: #f2f2f2;
+            }
+            #team tr:hover
+            {
+                background-color: #ddd;
+            }
+            #team th{
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                text-align: center;
+                color:white;
+                background-color: brown;
+            }
+
+
+</style>
+<script>
+            var app=angular.module('myApp',[]);
+            app.controller('myController',function($scope)
+            {
+                $scope.items=[
+                    {'no':1,'name':'Bharatanatyam','state':'Tamil Nadu','act':'Carnatic'},
+                    {'no':2,'name':'Kathak','state':'Uttar Pradesh','act':'Hindustani'},
+                    {'no':3,'name':'Kathakali','state':'Kerala','act':'Soppan'},
+                    {'no':4,'name':'Manipuri','state':'Manipur','act':'Ravindra Sangeet System'},
+                    {'no':5,'name':'Odissi','state':'Orissa','act':'Hindustani + Carnatic'},
+                    {'no':6,'name':'MohiniAttam','state':'Kerala','act':'Carnatic'},
+                    {'no':7,'name':'Kuchipudi','state':'Andhra Pradesh','act':'Carnatic'},
+                   ];
+                $scope.click=function(){
+                    console.log($scope.items);
+                }
+            }
+            );
+        </script>
+<body>
+<div class="grid-container">
+      <div class="item1" style="background-color: #EA7C07;">
+          <div class="topnav" >
+
+<a href="{% url 'home' %}" style="float:left;">HOME</a>
+    <a href="{% url 'about' %}" style="float:left;">ABOUT</a>
+    <a href="{% url 'blog' %}" style="float:left;">BLOG</a>
+    <a href="{% url 'gallery' %}" style="float:left;">GALLERY</a>
+              <a href="{% url 'feedback' %}" style="float:left;">FEEDBACK</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" style="float:left;">Log Out</a>
+        {% endif %}
+
+        <p style="color: white; float: right;">
+        {% if user.is_authenticated %}
+        <p style="float: right; padding-right: 30px; padding-top: 10px; font-size: 25px;">Welcome {{ user.username }}</p>
+        {% else %}
+        <a href="{% url 'login' %}" style="float:left;">
+                Log In</a>
+        <a href="{% url 'signup' %}"style="float:left;">
+                Sign Up</a>
+
+        {% endif %}
+    </p>
+</div>
+      </div>
+<div class="item2" style="font-size: 30px; background-color: #F9B262; border-radius: 10px; box-shadow: 5px 5px 10px; "><h3 style="color: #794206; font-size: 40px;  text-shadow: 2px 2px 3px  #FFD700; font-family:MV Boli;"><br>MENU</h3>
+      <br>
+    <ul>
+      <li><a href="{% url 'Bharatanatyam' %}" style="text-decoration: none; color: black;">Bharatanatyam</a></li>
+      <br>
+      <li>Kathak</li>
+      <br>
+      <li>Kuchipudi</li>
+      <br>
+      <li>Kathakali</li>
+      <br>
+      <li>Mohini Attam</li>
+      <br>
+      <li>Manipuri</li>
+      <br>
+      <li>Odissi</li>
+    </ul></div>
+
+  <div class="item3"><br>
+      <h3 style="align-items: center; color: #794206; text-shadow: 2px 2px 3px  #FFD700; font-size: 49px; padding-right: 20px; padding-left: 120px; font-family:MV Boli;">Indian Classical Dance</h3>
+  	<br>Indian classical dance, or Shastriya Nritya, is an umbrella term for various performance arts rooted in religious Hindu musical theatre styles,whose theory and practice can be traced to the Sanskrit text Natya Shastra.<br>There are 7 classical dances in India namely:<br>
+</p>
+{% verbatim %}
+    <div ng-app='myApp' ng-controller='myController' style="float: right; padding-right: 180px; padding-top: 30px; font-family:MV Boli; font-size: 19px;">
+            <table id='team'>
+
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Classical Dance</th>
+                    <th>State</th>
+                    <th>Music</th>
+                </tr>
+                <tr ng-repeat='item in items'>
+                    <td>{{item.no}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.state}}</td>
+                    <td>{{item.act}}</td>
+                </tr>
+
+            </table>
+        </div>
+
+{% endverbatim %}
+      </div>
+
+<div class="item5">
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <hr style="width: 400px; text-align:center; border: 1px solid black;">Contact Us:-<br>Phone No.:- 9920354126<br>Instagram: - rasikaj21<br>Facebook: - Rasika Joshi</div>
+</div>
+
+</body>
+</html>

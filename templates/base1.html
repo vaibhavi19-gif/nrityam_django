@@ -1,0 +1,169 @@
+{% load static %}
+
+<html lang="en">
+<head>
+<link href=" {% static 'css/base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+.item1 { grid-area: header;
+         grid-column: 1/ span 13; }
+      .item2 { grid-area: menu;
+          grid-column: 1 / span 3; }
+      .item3 { grid-area: main;
+          grid-column: 4/ span 10;}
+      .item4 { grid-area: Right; }
+      .item5 { grid-area: footer;
+          grid-column: 4 / span 10; }
+
+.grid-container {
+  display: grid;
+  grid-gap: 2.5px;
+   grid-template-areas:
+  'header header header'
+  'menu main main'
+  'menu footer footer';
+  background-color: white;
+  grid-auto-columns: 94px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.grid-container > div {
+  background-color: white;
+  text-align: center;
+  padding: 0px 0;
+  font-size: 30px;
+}
+blockquote{
+  display: block;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 20px;
+  text-align: left;
+}
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  text-decoration: none;
+  color: #29292A;
+  width:100%;
+  margin:0px;
+  border-radius: 17px;
+  font-style: bold;
+  font-size: 35px;
+  float: left;
+}
+
+
+.topnav a {
+  float: left;
+  color: #29292A;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: bold;
+  font-size: 31px;
+  text-shadow: 2px 2px 3px #FFD700;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+p{
+  font-size:18px;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  padding-left: 30px;
+}
+
+.flex-container > div {
+  background-color: #F9B262;
+  width: 300px;
+  margin: 5px;
+  text-align: center;
+  line-height: 75px;
+  font-family: Florence, cursive;
+  font-size: 30px;
+</style>
+<body>
+<body>
+<div class="grid-container">
+      <div class="item1" style="background-color: #EA7C07;">
+          <div class="topnav" >
+
+<a href="{% url 'home' %}" style="float:left;">HOME</a>
+    <a href="{% url 'about' %}" style="float:left;">ABOUT</a>
+    <a href="{% url 'blog' %}" style="float:left;">BLOG</a>
+    <a href="{% url 'gallery' %}" style="float:left;">GALLERY</a>
+              <a href="{% url 'feedback' %}" style="float:left;">FEEDBACK</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" style="float:left;">Log Out</a>
+        {% endif %}
+
+        <p style="color: white; float: right;">
+        {% if user.is_authenticated %}
+        <p style="float: right; padding-right: 30px; padding-top: 10px; font-size: 25px;">Welcome {{ user.username }}</p>
+        {% else %}
+        <a href="{% url 'login' %}" style="float:left;">
+                Log In</a>
+        <a href="{% url 'signup' %}"style="float:left;">
+                Sign Up</a>
+
+        {% endif %}
+    </p>
+</div>
+      </div>
+
+    <div class="item2" style="font-size: 30px; background-color: #F9B262; border-radius: 10px; box-shadow: 5px 5px 10px; "><h3 style="color: #794206; font-size: 40px;  text-shadow: 2px 2px 3px  #FFD700; font-family:MV Boli;"><br>MENU</h3>
+      <br>
+
+      <ul>
+        <li><div class="dropdown">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="{% url 'prarambhik' %}" style="text-decoration: none; color: black;">Prarambhik</a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'pure' %}">Indian Classical Dance</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="{% url 'Bharatanatyam' %}">Bharatanatyam</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="{% url 'prarambhik' %}">Prarambhik</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="{% url 'shloka' %}">Shloka</a></li>
+          <li><a href="{% url '7styles' %}">Seven Styles</a></li>
+          <li><a href="{% url 'featureB' %}">Meaning</a></li>
+          <li><a href="{% url 'amudra' %}">Asamayukta hasta mudra</a></li>
+        </ul>
+      </div></li>
+        <br>
+        <li>Praveshika Pratham</li>
+        <br>
+        <li>Praveshika Purna</li>
+        <br>
+        <li>Madhyama Pratham</li>
+        <br>
+        <li>Madhyama Purna</li>
+        <br>
+        <li>Visharad Pratham</li>
+        <br>
+        <li>Visharad Purna</li>
+      </ul>
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+</body>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<title>NRITYAM</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+	blockquote{
+  display: block;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  text-align: left;
+  background-color: rgb(255,255,255,0.5);
+  border-radius: 10px;
+}
+.topnav {
+  overflow: hidden;
+  background-color: black;
+  text-decoration: none;
+  color: #29292A;
+  width:100%;
+  margin:0px;
+  border-radius: 17px;
+  font-style: bold;
+  font-size: 35px;
+  float: left;
+}
+
+
+.topnav a {
+  float: left;
+  color: #29292A;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: bold;
+  font-size: 31px;
+  text-shadow: 2px 2px 3px #FFD700;
+  color: white;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+p{
+  font-size:18px;
+}
+</style>
+    <script>
+
+            function bigImg(x) {
+            x.style.height = "250px";
+            x.style.width = "250px";
+            }
+
+            function normalImg(x) {
+            x.style.width = "192px";
+            x.style.height = "200px"
+            }
+
+            function mouseDown() {
+            document.getElementById("amudrap").innerHTML = "Asamayukta Hasta Mudra<br>Mudras are a type of exercise to our fingers and hands";
+            }
+
+            function mouseUp() {
+            document.getElementById("amudrap").innerHTML ='Asamayukta Hasta Mudra';
+            }
+
+            function notesaccess() {
+            document.getElementById("Subscribe").innerHTML = "THANK YOU!!! You Have Subscribed for Latest Blogs!!";
+            }
+
+            function blurFunc(){
+                document.getElementById("Subscribe").innerHTML = "";
+            }
+
+            function hideTable(){
+                document.getElementById('blog').style.visibility = "hidden";
+            }
+
+            function showTable(){
+                document.getElementById('blog').style.visibility = "visible";
+            }
+        </script>
+
+
+</head>
+<body style="background-color: black;">
+<div  style="background-color: #EA7C07;">
+<div class="topnav">
+
+    <a href="{% url 'home' %}" >HOME</a>
+    <a href="{% url 'about' %}" >ABOUT</a>
+    <a href="{% url 'blog' %}" >BLOG</a>
+    <a href="{% url 'gallery' %}" >GALLERY</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" >Log Out</a>
+        {% endif %}
+
+        <p style="color: black; float: right;">
+        {% if user.is_authenticated %}
+        <p style="float: right; padding-right: 30px; padding-top: 10px; font-size: 25px;">Welcome {{ user.username }}</p>
+        {% else %}
+        <a href="{% url 'login' %}" >
+                Log In</a>
+        <a href="{% url 'signup' %}">
+                Sign Up</a>
+
+        {% endif %}
+    </p>
+</div>
+</div>
+<div>
+  <button style="float:left" ondblclick="showTable()" >Show Blogs</button><button style="float:right" ondblclick="hideTable()">Hide Blogs</button>
+  <p id="blog" style="visibility: hidden; color:white;" align="center">Asamayukta Mudra  ,  Samayukta Mudra  ,  Shiro Bheda</p>
+</div>
+<br>
+<br>
+<div style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
+<blockquote>
+  <a href="{% url 'amudra' %}" id="amudra" style="text-decoration: none; color: black;">
+    <p style="font-size: 30px;" id="amudrap" onmouseover="mouseDown()" onmouseout="mouseUp()">Asamayukta Hasta Mudra</p></a></blockquote>
+</div>
+  <br>
+  <br>
+  <br>
+  <footer align=center style="color:white;">To get Notified about latest Blogs<button onclick='notesaccess()' onblur="blurFunc()" style="color:black;">Subscribe</button>
+    <p id="Subscribe"></p></footer>
+</body></html>

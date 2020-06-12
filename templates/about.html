@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>About</title>
+	<link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+    *{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+
+}
+
+body{
+	font-size: 20px;
+	overflow-x: hidden;
+	color: white;
+	font-family: 'Slabo 27px', serif;
+
+}
+
+header{
+	background-image:  linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://cdn.hipwallpaper.com/i/79/66/XSdIcz.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.clearfix:after{
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0px;
+	clear: both;
+}
+
+.row{
+	max-width: 1180px;
+	margin-top: 0 auto;
+}
+
+.logo{
+	height: 120px;
+	width: auto;
+	float: left;
+	margin-top: 20px;
+
+}
+.main-nav{
+	float: right;
+	margin-top: 60px;
+}
+
+.main-nav li{
+	padding:5px 0px;
+	display: inline-block;
+	list-style: none;
+	margin-left: 40px;
+}
+
+.main-nav li a{
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 90%;
+	font-weight: 100;
+}
+
+.main-nav li a:hover{
+	border-bottom: 2px solid #bf55ec;
+}
+
+
+
+.main-content-header{
+	width: 1180px;
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+h1
+{
+	color: white;
+	font-size: 240%;
+	word-spacing: 5px;
+	letter-spacing: 3px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+
+.btn{
+	display: inline-block;
+    padding: 20px 30px;
+    font-weight: lighter;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 200px;
+    transition: background-color 0.2s , border 0.2s,color 0.2;
+    font-size: 120%;
+
+
+}
+
+.btn-full{
+	background-color: transparent;
+	color: #bf55ec;
+    margin-right: 10px;
+    border: 1px solid #bf55ec;
+
+}
+
+.btn1-full{
+	background-color: transparent;
+	color: #bf55ec;
+    margin-right: 10px;
+    border: 1px solid #bf55ec;
+
+}
+
+.btn-full:hover{
+	background-color: white;
+}
+
+.btn1-full:hover{
+	background-color: white;
+}
+
+.colo{
+	animation: colo 1s infinite;
+}
+@keyframes colo{
+	0%{color: red;}
+    25%{color: #bf55ec;}
+    50%{color: white;}
+    100%{color: #bf55ec;}
+
+}
+.mob{
+	display: none;
+}
+
+
+
+@media only screen and (max-width:1180px){
+	.main-content-header{
+		width: 100%;
+		padding: 0 2%;
+	}
+
+}
+
+@media only screen and (max-width:998px){
+   h1{font-size:200%; }
+
+}
+
+@media only screen and (max-width:768px){
+	h1{font-size:180%; }
+
+	.main-nav{display: none;}
+
+	.mob{
+		display: inline-block;
+		color: white;
+		float: right;
+		margin-top: 30px;
+		margin-right: 20px;
+
+	}
+	.main-nav{float: left;}
+
+
+}
+</style>
+<body onload="myload()">
+	<header>
+		<nav>
+			<div class="row clearfix">
+
+				<ul class="main-nav">
+				    <li><a href="{% url 'home' %}">HOME</a></li>
+				    <li><a href="{% url 'about' %}">ABOUT US</a></li>
+                   <li> <a href="{% url 'blog' %}" >BLOG</a></li>
+   <li> <a href="{% url 'gallery' %}" >GALLERY</a></li>
+					<li><a href="{% url 'feedback' %}" style="float:left;">FEEDBACK</a></li>
+        {% if user.is_authenticated %}
+          <li>  <a href="{% url 'logout' %}" style="text-decoration: None; color:white">Log Out</a></li>
+        {% endif %}
+
+        <p style="color: white; float: right;">
+        {% if user.is_authenticated %}
+        <p style="float: right; padding-right: 30px; padding-top: 10px; font-size: 25px;">Welcome {{ user.username }}</p>
+        {% else %}
+        <li><a href="{% url 'login' %}"  style="text-decoration: None; color:white">
+                Log In</a></li>
+        <li><a href="{% url 'signup' %}"  style="text-decoration: None; color:white">
+                Sign Up</a></li>
+
+        {% endif %}
+    </p>
+                    </ul>
+                    <a href="#" class="mob" onclick="slide()"><i class="fa fa-bars"></i></a>
+			</div>
+		</nav>
+
+        <div class="main-content-header">
+		<p>This website is started with the aim of spreading indian classical dance styles all over the world.We aim at breaking all sorts of boundaries and helping students all over the globe to learn their favourite dance style from scratch.</p><br>
+		<p>We aim at using the social media platforms and YouTube as a source of learning the courses assigned.</p><br>
+		<p>It is said that there is no age limit to learn someting new , thus Nrityam provides everyone free and easy learning
+		</p><br>
+		<p>JUST A CLICK AWAY TO ENTER INTO THE WORLD OF DANCE!</p>
+	    </div>
+	</header>
+</body>
+</html>

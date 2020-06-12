@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <style type="text/css">
+  	.container1{
+				width: 100%;
+				height: 540px;
+				background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7cade1d2-6d43-45ac-8d2a-0c77e01c887f/dcibp6-f108c987-589e-4207-848e-dba2c817365c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdjYWRlMWQyLTZkNDMtNDVhYy04ZDJhLTBjNzdlMDFjODg3ZlwvZGNpYnA2LWYxMDhjOTg3LTU4OWUtNDIwNy04NDhlLWRiYTJjODE3MzY1Yy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.GJWKDKNjAwaA19zH3PTAMyOGuvHNVrnN1LVRUDEe6N8');
+				background-repeat: no-repeat;
+				background-size: cover;
+				box-shadow: 10px 10px 10px;
+				transform: translate(0px,100px);
+				align-items: center;
+				background-color: white;
+				border-color: black;
+
+			}
+		.container2{
+				width: 75%;
+				height: px;
+				box-shadow: 5px 5px 20px #DE9B2E;
+				align-items: center;
+				transform: translate(50px,80px);
+				border-radius: 20px 50px;
+				border-color: black;
+			}
+
+}
+  </style>
+
+	<body style="background-color: #F9B262;">
+
+    <div class="container1" >
+		<section>
+			<table style="height:100%; width:100%">
+			<article>
+			<tr>
+				<th>
+					<div class="container2"><p style="text-align:center; text-shadow: 0px 1px 0px black; font-size:52px; padding-top: 30px; padding-bottom: 30px;padding-right: 20px;padding-left: 20px; font-family: vivaldi; color: white;">"It is your feet that move<br>But your Heart that Dances"</p></div>
+				</th>
+			</aritcle>
+			<article>
+							<th style="text-align:center; width:50%; height:100%; font-family:MV Boli; font-size:45px; color: white;"><br>Click Below To<br> Get Started<br><br>
+			</article>
+			<article>
+						<p style="text-align:center; font-size:40px; "><a href="{% url 'Bharatanatyam' %}" style="text-decoration:none;  text-shadow: 1px 1px 2px; color: white; text-shadow:2px 2px 3px black; border:solid black 5px;border-radius:15px 30px; border-collapse: separate;padding-right: 20px; padding-left: 20px; box-shadow: 2px 2px 10px #DE9B2E;">Pure-Classical</a></p>
+
+						<p style="padding-top: 10px; text-align:center; font-size:40px;"><a href="{% url 'semi' %}" style="text-decoration:none; text-shadow: 2px 2px 3px; color: white; text-shadow:1px 1px 2px black; border:solid black 5px; border-radius:15px 30px; border-collapse: separate;padding-right: 20px; padding-left: 20px; box-shadow: 2px 2px 10px #DE9B2E;">Semi-Classical</a></p>
+			</article>
+		</th>
+	</article>
+</tr>
+			</table>
+		</section>
+        </div>
+	</body>
+</html>
+{% endblock content %}

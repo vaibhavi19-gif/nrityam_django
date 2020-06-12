@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+
+}
+
+.container{
+	width: 400px;
+	height: 400px;
+	box-shadow: 10px 10px 10px;
+	transform: translate(0px,15px);
+	align-items: center;
+	background-color: #F88226;
+	border-radius: 10px;
+	border-color: black;
+	align: center;
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+</style>
+<body style="background-color: white;">
+<BR>
+<br>
+<br>
+<h1 align="center" style="font-size: 55px;">Log IN</h1>
+<div class="container" style="text-align: center; padding-top:35px;">
+    <form method="POST">
+        {% csrf_token %}
+         <font size="5px" color="black" align="center">
+             <b>Username </b><br>
+             <input type="text" name="Username" placeholder="Username" style="width:250px; height:35px;">
+             <br><br>
+             <b>Password </b><br>
+             <input type="password" name="Password" placeholder="Password" style="width:250px; height:35px;">
+             <br><br>
+                 <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+         </font>
+    </form>
+            <div>
+                {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}
+            </div>
+</div>
+</body>
+{% endblock content %}

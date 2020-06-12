@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+.box{
+	height:700px;
+	width:500px;
+	position:absolute;
+	opacity:0.6;
+	background-color: black;
+	right:50px;
+	margin:0px;}
+
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+
+}
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+</style>
+<body style="background-image: url('{% static 'tut1/media/logini1.jpg' %}'); background-size: cover; background-repeat: no-repeat; margin:0px;">
+<table style="width:100%; height:100%;">
+		<tr>
+			<td style="align:left;color:white; width:50%"></td>
+
+			<td style=" text-align:center; background-color:rgb(0,0,0,0.3); height:1000px">
+
+<h3 style="color: white; font-size:55px;">Sign Up</h3>
+                <br>
+                <br>
+<form method="POST" style="font-size: 15px;" >
+    {% csrf_token %}
+    <p style="font-size: 20px; font-style: bold;">Name </p>
+    <input type="text" name="Fullname" placeholder="Fullname"><br><br>
+    <p style="font-size: 20px; font-style: bold;">Email </p>
+    <input type="text" name="Email" placeholder="Email"><br><br>
+    <p style="font-size: 20px; font-style: bold;">Username</p>
+    <input type="text" name="Username" placeholder="Username"><br><br>
+    <p style="font-size: 20px; font-style: bold;">Password </p>
+    <input type="password" name="Password" placeholder="Password"><br><br>
+    <p style="font-size: 20px; font-style: bold;">Confirm Password </p>
+    <input type="password" name="Confirm" placeholder="Confirm Password"><br><br>
+    <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+</form>
+                <div>
+                    {% for message in messages %}
+                    <h3>{{ message }}</h3>
+                    {% endfor %}
+                </div>
+    </td>
+	   </tr>
+
+	</table>
+</body>
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Semi-Classical</title>
+</head>
+<style type="text/css">
+	.grid-container {
+  display: grid;
+  grid-gap: 5.5px;
+   grid-template-columns: auto auto;
+  background-color: black;
+  padding: 0px;
+  margin: 0px;
+}
+
+.grid-container > div {
+  background-color: #414a4c;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+</style>
+<body style="background-color: black;">
+
+    <br>
+    <br>
+    <br>
+    <h2 align="center" style="color:white;">Semi-Classical</h2>
+<div class="grid-container">
+
+	<div class="item1">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uaUOPEYvQCc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </div>
+    <div class="item2">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oqB1ZeK6ohg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="item3">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ma0F6AQiF8E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="item4">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bXb6PhCmo28" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</body>
+
+{% endblock content %}

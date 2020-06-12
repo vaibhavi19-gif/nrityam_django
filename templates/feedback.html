@@ -1,0 +1,335 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
+
+
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'PT Sans Narrow', sans-serif;
+
+}
+
+body{
+	background: white;
+}
+
+.wrapper{
+	background: #F88226;
+	width: 60%;
+	float:right;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px rgba(254,236,164,1);
+}
+
+.wrapper h1{
+	text-align: center;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: black;
+
+}
+
+.wrapper .input_field{
+
+	margin-bottom: 10px;
+
+
+}
+
+.wrapper .input_field input[type="text"],textarea
+{
+	width: 100%;
+	border: 1px solid #bf55ec;
+	padding: 10px;
+	font-size: 15px;
+}
+
+.wrapper .btn button[type="submit"]{
+
+	border: 1px solid;
+	margin-top: 15px;
+	padding: 10px;
+	width: 100%;
+	color: #332902;
+	text-transform: uppercase;
+	letter-spacing:5px;
+	font-weight: bold;
+	border-radius: 25px;
+	background: #bf55ec;
+	cursor: pointer;
+	font-size: 25px;
+
+
+}
+
+.wrapper #error_message{
+	margin-bottom: 20px;
+	padding: 0px;
+	background-color: white;
+	text-align: center;
+	font-size: 20px;
+	transition: all 0.5s ease;
+	font-weight: bold;
+
+
+}
+      .item1 { grid-area: header;
+         grid-column: 1/ span 13; }
+      .item2 { grid-area: menu;
+          grid-column: 1 / span 4; }
+      .item3 { grid-area: main;
+          grid-column: 5/ span 9;}
+      .item4 { grid-area: Right; }
+      .item5 { grid-area: footer;
+          grid-column: 5 / span 9; }
+
+.grid-container {
+  display: grid;
+  grid-gap: 2.5px;
+   grid-template-areas:
+  'header header '
+  'menu main '
+  'menu footer ';
+  background-color: white;
+  grid-auto-columns: 94px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.grid-container > div {
+  background-color: white;
+  text-align: center;
+  padding: 0px 0;
+  font-size: 30px;
+}
+
+blockquote{
+  display: block;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 20px;
+  text-align: left;
+}
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  text-decoration: none;
+  color: #29292A;
+  width:100%;
+  margin:0px;
+  border-radius: 17px;
+  font-style: bold;
+  font-size: 35px;
+  float: left;
+}
+
+
+.topnav a {
+  float: left;
+  color: #29292A;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: bold;
+  font-size: 31px;
+  text-shadow: 2px 2px 3px #FFD700;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+p{
+  font-size:18px;
+}
+
+</style>
+<script type="text/javascript">
+  function validation(){
+
+  var username = document.getElementById("username").value;
+  var email=document.getElementById("email").value;
+
+  var  error_message =document.getElementById("error_message");
+    var text;
+  error_message.style.padding = "10px";
+
+  if(username.length<5){
+    text ="USERNAME length greater than 5";
+    error_message.innerHTML =text;
+    return false;
+
+  }
+  var r=/^[a-zA-Z]{5,}$/;
+  if(!r.test(username)){
+    text=" INVALID USERNAME";
+    error_message.innerHTML=text;
+    return false;
+  }
+
+  var reg=/^([A-Za-z0-9\.-]+)@([A-Za-z0-9-]+).([a-zA-Z]{3})(.[a-zA-Z]{3})?$/;
+    if(!reg.test(email)){
+    text=" INVALID EMAIL ";
+    error_message.innerHTML=text;
+    return false;
+  }
+
+
+
+       var style=document.getElementByName('style');
+       if(!(style[0].checked || style[1].checked)){
+        text="SELECT INTEREST";
+        error_message.innerHTML=text;
+        return false;
+       }
+
+
+       var RATE=document.getElementByName('RATE');
+       if(!(RATE[0].checked || RATE[1].checked || RATE[2].checked)){
+        text="SELECT RATE";
+        error_message.innerHTML=text;
+        return false;
+       }
+
+
+    alert("FORM SUCCESSFULLY SUBMITTED");
+  return true;
+
+
+}
+
+</script>
+
+<body>
+<div class="grid-container">
+    <div class="item1" style="background-color: #EA7C07;">
+          <div class="topnav" >
+
+<a href="{% url 'home' %}" style="float:left;">HOME</a>
+    <a href="{% url 'about' %}" style="float:left;">ABOUT</a>
+    <a href="{% url 'blog' %}" style="float:left;">BLOG</a>
+    <a href="{% url 'gallery' %}" style="float:left;">GALLERY</a>
+              <a href="{% url 'feedback' %}" style="float:left;">FEEDBACK</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" style="float:left;">Log Out</a>
+        {% endif %}
+
+        <p style="color: white; float: right;">
+        {% if user.is_authenticated %}
+        <p style="float: right; padding-right: 30px; padding-top: 10px; font-size: 25px;">Welcome {{ user.username }}</p>
+        {% else %}
+        <a href="{% url 'login' %}" style="float:left;">
+                Log In</a>
+        <a href="{% url 'signup' %}"style="float:left;">
+                Sign Up</a>
+
+        {% endif %}
+    </p>
+</div>
+    </div>
+        <div class="item2" style="font-size: 30px; background-color: #F9B262; border-radius: 10px; box-shadow: 5px 5px 10px; ">
+            <h3 style="color: #794206; font-size: 40px;  text-shadow: 2px 2px 3px  #FFD700; font-family:MV Boli;"><br>FEEDBACKS</h3>
+    {% for feed in feeds %}
+    <b>Username:</b>{{ feed.Username }}<br>
+    <b>Course:</b>{{ feed.Course }}<br>
+    <b>Ratings:</b>{{ feed.Rate }}<br>
+    <b>Need of Improvement:</b>{{ feed.Need }}<br><br>
+    {% endfor %}
+        </div>
+
+        <div class="item3">
+  <div class="wrapper">
+    <h1>FEEDBACK</h1><br>
+
+    <div id="error_message"></div>
+
+
+<form id="myform" onsubmit="return validation()" action="/feedback_upload" method="post">
+    {% csrf_token %}
+  <h4>Username</h4>
+
+  <div class="input_field">
+    <input type="text" name="username" id="username" placeholder="USERNAME">
+       </div><br>
+
+<h4>Email</h4>
+   <div class="input_field">
+    <input type="text" name="email" id="email" placeholder="E-MAIL">
+       </div><br>
+
+
+       <div class="input_field">
+                <h4>COURSE TAKEN:&nbsp</h4><br>
+                <label for="semiclassical">SEMICLASSICAL
+                </label>
+                <input type="radio" name="style" id="semiclassical" value="semiclassical">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+
+                <label for="classical">CLASSICAL
+                </label>
+       <input type="radio" name="style" id="classical" value="classical">
+       </div><br>
+
+
+   <div class="input_field">
+                <h4>RATE THE COURSE:&nbsp</h4><br>
+                <label for="EXCELLENT">EXCELLENT
+                </label>
+                <input type="radio" name="RATE" id="EXCELLENT" value="EXCELLENT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+
+                <label for="GOOD">GOOD
+
+                </label>
+       <input type="radio" name="RATE" id="GOOD" value="GOOD"><br><br>
+
+                <label for="NEEDS IMPROVEMENT">NEEDS IMPROVEMENT
+                </label>
+                <input type="radio" name="RATE" id="NEEDS IMPROVEMENT" value="NEEDS IMPROVEMENT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+
+
+
+       </div><br>
+
+       <div class="input_field"><textarea rows="5" cols="80" name="text">NEED OF IMPROVEMENT IN: </textarea></div>
+
+<div class="btn">
+  <button type="submit">SUBMIT</button>
+</div>
+
+</form>
+  </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <br><br>
+
+<div class="item5">
+
+        Contact Us:-<br>Phone No.:- 9920354126<br>Instagram: - rasikaj21<br>Facebook: - Rasika Joshi</div>
+    </div>
+    </div>
+</body>
+</html>
+
